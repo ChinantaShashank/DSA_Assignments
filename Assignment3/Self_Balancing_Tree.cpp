@@ -26,7 +26,7 @@ private:
     }
 
     void updateHeight(Node* node) {
-        node->height = 1 + max(height(node->left), height(node->right));
+        node->height = 1 + std::max(height(node->left), height(node->right));
     }
 
     void updateSize(Node* node) {
@@ -92,7 +92,7 @@ private:
         } else if (key > node->key) {
             node->right = insert(node->right, key);
         } else {
-            return node; // Duplicates are not allowed
+            return node;
         }
 
         return balance(node);
@@ -175,7 +175,7 @@ public:
     }
 };
 
-// Example usage
+
 int main() {
     BSearch tree;
     tree.insert(10);
@@ -183,16 +183,16 @@ int main() {
     tree.insert(5);
     tree.insert(15);
     
-    cout << "Find 10: " << tree.find(10) << std::endl; // True
-    cout << "Find 25: " << tree.find(25) << std::endl; // False
+    std::cout << "Find 10: " << tree.find(10) << std::endl;
+    std::cout << "Find 25: " << tree.find(25) << std::endl;
 
-    cout << "Order of key 15: " << tree.orderOfKey(15) << std::endl; // 2
-    cout << "Order of key 10: " << tree.orderOfKey(10) << std::endl; // 1
+    std::cout << "Order of key 15: " << tree.orderOfKey(15) << std::endl; 
+    std::cout << "Order of key 10: " << tree.orderOfKey(10) << std::endl;
 
-    cout << "Element with order 2: " << tree.getByOrder(2) << std::endl; // 15
+    std::cout << "Element with order 2: " << tree.getByOrder(2) << std::endl; 
 
     tree.remove(10);
-    cout << "Find 10 after removal: " << tree.find(10) << std::endl; // False
+    std::cout << "Find 10 after removal: " << tree.find(10) << std::endl;
 
     return 0;
 }
